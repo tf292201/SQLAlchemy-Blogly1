@@ -15,6 +15,13 @@ CREATE TABLE users (
   image_url VARCHAR(255) DEFAULT 'default_profile_image.jpg'
 );
     
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INTEGER REFERENCES users(id) NOT NULL
+);
 -- Insert 10 users into the 'users' table
 INSERT INTO users (first_name, last_name) VALUES
   ('John', 'Doe'),
